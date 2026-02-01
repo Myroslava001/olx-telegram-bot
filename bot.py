@@ -7,7 +7,7 @@ from telegram import Bot, Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # ===== НАЛАШТУВАННЯ =====
-TOKEN = "8437214679:AAHKtE6-UBzD4SLhyr-PGsrX1q0p2vxBNZ0"
+TOKEN = "8437214679:AAHy_IhJaVqPiCz5Gylt4D2E0UBLapneqAQ"
 CHANNEL_ID = "@LudmiCarsBot"
 RSS_URL = "https://www.olx.ua/uk/rss/q-macbook-air/"
 SEEN_FILE = "seen_links.txt"
