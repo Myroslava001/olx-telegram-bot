@@ -3,11 +3,9 @@ import feedparser
 import os
 from telegram import Bot
 
-
-TOKEN = "8437214679:AAEVoh8BTfbJx15mZcu7VCpsI4ZSB9Vpe3Y"
-
-
-CHANNEL_ID = "@LudmiCarsBot" 
+TOKEN = "8437214679:AAHKtE6-UBzD4SLhyr-PGsrXlq0p2vxBNZ0
+"
+CHANNEL_ID = "@LudmiCarsBot"
 RSS_URL = "https://www.olx.ua/uk/rss/q-macbook-air/"
 
 bot = Bot(token=TOKEN)
@@ -35,9 +33,9 @@ while True:
         title = entry.title
 
         if link not in seen_links:
-            message = f"🆕 Нове оголошення:\n{title}\n{link}"
+            message = f"{title}\n{link}"
             bot.send_message(chat_id=CHANNEL_ID, text=message)
             seen_links.add(link)
             save_seen(seen_links)
 
-    time.sleep(300)
+    time.sleep(60)
