@@ -4,7 +4,7 @@ import os
 from telegram import Bot
 
 TOKEN = "8437214679:AAHKtE6-UBzD4SLhyr-PGsrXlq0p2vxBNZ0"
-"
+
 CHANNEL_ID = "@LudmiCarsBot"
 RSS_URL = "https://www.olx.ua/uk/rss/q-macbook-air/"
 
