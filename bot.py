@@ -129,12 +129,7 @@ def main():
 
     app.add_handler(CommandHandler("start", start_cmd))
 
-    # кожні 60 секунд перевіряємо RSS
-    app.job_queue.run_repeating(
-        rss_job,
-        interval=CHECK_INTERVAL,
-        first=0
-    )
+
 
     print("✅ Bot started. Waiting for /start...")
     app.run_polling()
