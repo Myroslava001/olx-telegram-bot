@@ -10,7 +10,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 # Токен краще тримати в Render → Environment → BOT_TOKEN
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 if not BOT_TOKEN:
-    raise RuntimeError("Нема BOT_TOKEN в environment"
+    raise RuntimeError("Нема BOT_TOKEN в environment")
                        # OLX Polska: samochody, prywatne, do 5000 zł, od najnowszych + RSS
 RSS_URL = "https://www.olx.pl/motoryzacja/samochody/?search%5Bfilter_float_price%3Ato%5D=5000&search%5Bprivate_business%5D=private&search%5Border%5D=created_at:desc&rss=1"
 
