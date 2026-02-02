@@ -124,17 +124,20 @@ async def rss_job(context: ContextTypes.DEFAULT_TYPE):
 
 # ================== MAIN ==================
 def main():
-    if not BOT_TOKEN:
-        raise RuntimeError("Нема BOT_TOKEN. Додай його в Render → Environment (ключ BOT_TOKEN).")
-
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start_cmd))
 
     # кожні 60 секунд перевіряємо RSS
-    app.job_queue.run_repeating(rss_job, interval=CHECK_INTERVAL_SECONDS, first=5)
+    app.job_queue.run_repeating(
+        rss_job,
+        interval=CHECK_INTERVAL,
+        first=0
+    )
 
-    print("✅ Bot started. Waiting for /start…")
+    print("✅ Bot started. Waiting for /start...")
     app.run_polling()
-    if __name__ == "__main__":
+
+
+if __name__ == "__main__":
     main()
