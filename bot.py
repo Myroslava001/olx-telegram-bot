@@ -219,25 +219,19 @@ def main():
         # створимо task після старту polling
         # (через create_task в run_polling нижче)
 
-    print("✅ Bot started. Waiting for /start...")
+print("✅ Bot started. Waiting for /start...")
 
-    # Запускаємо polling. drop_pending_updates допомагає прибрати старі апдейти.
     try:
-        if app.job_queue is None:
-            # стартуємо polling, а паралельно наш fallback цикл
-            async def runner():
-                await post_init(app)
-                asyncio.create_task(_fallback_loop(app))
-                await app.run_polling(drop_pending_updates=True)
+        app.run_polling(drop_pending_updates=True)
 
-            asyncio.run(runner())
-        else:
-            app.post_init = post_init
-            app.run_polling(drop_pending_updates=True)
+    except Conflict as e:
+        print("❌ CONFLICT: запущено більше одного інстансу бота (getUpdates).")
+        raise
 
-except Exception as e:
-    print("❌ ERROR:", repr(e))
-    raise
+    except Exception as e:
+        print("❌ ERROR:", repr(e))
+        raise
+
 
 if __name__ == "__main__":
     main()
