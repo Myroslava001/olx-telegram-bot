@@ -221,15 +221,11 @@ def main():
 
 print("✅ Bot started. Waiting for /start...")
 
-print("✅ Bot started. Waiting for /start...")
-
     try:
         app.run_polling(drop_pending_updates=True)
-
     except Conflict:
-        print("❌ Запущено більше одного інстансу бота.")
+        print("❌ CONFLICT: запущено більше одного інстансу бота")
         raise
-
     except Exception as e:
         print("❌ ERROR:", repr(e))
         raise
