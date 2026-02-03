@@ -199,7 +199,6 @@ async def post_init(app):
     except Exception as e:
         print("⚠️ delete_webhook failed:", repr(e))
 
-
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
@@ -208,22 +207,9 @@ def main():
     app.add_handler(CommandHandler("status", status_cmd))
     app.add_handler(CommandHandler("testsend", testsend_cmd))
 
-    # Якщо є JobQueue — ок, запускаємо через нього.
-    # Якщо нема (на Render часто так) — запускаємо fallback loop.
-    if app.job_queue is not None:
-        app.job_queue.run_repeating(rss_job, interval=CHECK_INTERVAL_SECONDS, first=5)
-        print("✅ JobQueue enabled: RSS scheduled")
-    else:
-        print("⚠️ JobQueue is None: using fallback asyncio loop")
-        app.post_init = post_init
-        # створимо task після старту polling
-        # (через create_task в run_polling нижче)
+    print("✅ Bot started. Waiting for /start...")
 
-app.add_handler(CommandHandler("testsend", testsend_cmd))
-
-print("✅ Bot started. Waiting for /start...")
-
-app.run_polling(drop_pending_updates=True)
+    app.run_polling(drop_pending_updates=True)
 
 
 if __name__ == "__main__":
