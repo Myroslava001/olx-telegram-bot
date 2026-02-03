@@ -235,7 +235,7 @@ def main():
             app.post_init = post_init
             app.run_polling(drop_pending_updates=True)
 
- except Exception as e:
+except Exception as e:
     print("❌ ERROR:", repr(e))
     raise
 
