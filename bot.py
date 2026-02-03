@@ -69,13 +69,19 @@ def link_alive(url: str) -> bool:
         return False
 
 
-# ================== КОМАНДИ ==================
+# ================= КОМАНДИ =================
+
 async def start_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     chat_id = update.effective_chat.id
     save_chat_id(chat_id)
     await update.message.reply_text("Я живий 🟢\nОк, буду скидати нові оголошення сюди.")
 
 
+async def set_target(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    chat_id = update.effective_chat.id
+    with open("target_chat_id.txt", "w", encoding="utf-8") as f:
+        f.write(str(chat_id))
+    await update.message.reply_text(f"✅ Тепер оголошення підуть сюди: {chat_id}")
 # ================== JOB: ПЕРЕВІРКА RSS ==================
 async def rss_job(context: ContextTypes.DEFAULT_TYPE):
     chat_id = load_chat_id()
@@ -123,17 +129,14 @@ async def rss_job(context: ContextTypes.DEFAULT_TYPE):
         print("❌ Помилка при перевірці RSS:", repr(e))
 
 
-# ================== MAIN ==================
 def main():
     app = ApplicationBuilder().token(BOT_TOKEN).build()
 
     app.add_handler(CommandHandler("start", start_cmd))
-
-
+    app.add_handler(CommandHandler("settarget", set_target))
 
     print("✅ Bot started. Waiting for /start...")
     app.run_polling()
-
 
 if __name__ == "__main__":
     main()
