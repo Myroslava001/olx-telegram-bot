@@ -230,6 +230,5 @@ print("✅ Bot started. Waiting for /start...")
         print("❌ ERROR:", repr(e))
         raise
 
-
 if __name__ == "__main__":
     main()
