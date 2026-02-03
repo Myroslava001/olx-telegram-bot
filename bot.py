@@ -235,11 +235,9 @@ def main():
             app.post_init = post_init
             app.run_polling(drop_pending_updates=True)
 
-    except Conflict as e:
-        # Це той самий "два інстанси" конфлікт
-        print("❌ CONFLICT: запущено більше одного бота на цей токен. Перевір Render instances/локальний запуск.")
-        raise e
+ except Exception as e:
+    print("❌ ERROR:", repr(e))
+    raise
 
-
-if name == "__main__":
+if __name__ == "__main__":
     main()
