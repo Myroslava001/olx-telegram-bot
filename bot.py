@@ -219,18 +219,12 @@ def main():
         # створимо task після старту polling
         # (через create_task в run_polling нижче)
 
+app.add_handler(CommandHandler("testsend", testsend_cmd))
+
 print("✅ Bot started. Waiting for /start...")
 
-try:
-    app.run_polling(drop_pending_updates=True)
+app.run_polling(drop_pending_updates=True)
 
-except Conflict:
-    print("❌ CONFLICT: запущено більше одного інстансу бота")
-    raise
 
-except Exception as e:
-    print("❌ ERROR:", repr(e))
-    raise
-    
 if __name__ == "__main__":
     main()
