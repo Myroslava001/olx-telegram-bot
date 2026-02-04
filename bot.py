@@ -14,12 +14,11 @@ if not BOT_TOKEN:
     raise RuntimeError("Нема BOT_TOKEN в environment (Render -> Environment -> BOT_TOKEN)")
 
 # OLX RSS (твій URL лишаю як є)
-RSS_URL = "https://www.olx.pl/motoryzacja/samochody/?search%5Bfilter_float_price%3Ato%5D=5000&search%5Bprivate_business%5D=private&search%5Border%5D=created_at:desc&rss=1"
-
+RSS_URL = https://www.olx.pl/motoryzacja/samochody/lodzkie/?search%5Bfilter_float_price:to%5D=7000&search%5Bfilter_float_year:from%5D=2000&format=rss
 SEEN_FILE = "seen_links_pl_seen.txt"
 CHAT_FILE = "target_chat_id.txt"
 
-CHECK_INTERVAL_SECONDS = 60
+CHECK_INTERVAL_SECONDS = 360
 TIMEOUT_SECONDS = 20
 
 HEADERS = {
