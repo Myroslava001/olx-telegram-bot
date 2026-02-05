@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 BOT_TOKEN = os.getenv("BOT_TOKEN", "").strip()
 RSS_URL = os.getenv(
     "RSS_URL",
-    "https://www.olx.pl/motoryzacja/samochody/lodzkie/?search%5Bfilter_float_price:to%5D=7000&search%5Bfilter_float_year:from%5D=2000&format=rss",
+    "https://www.olx.pl/motoryzacja/samochody/?search%5Border%5D=created_at:desc&search%5Bfilter_float_price:to%5D=7000&search%5Bfilter_float_year:from%5D=2000&format=rss",
 ).strip()
 
 CHECK_INTERVAL_SECONDS = int(os.getenv("CHECK_INTERVAL_SECONDS", "300"))
