@@ -4,7 +4,6 @@ import asyncio
 import logging
 from typing import Optional, Set, List, Tuple
 
-import aiohttp
 import feedparser
 from telegram import Update
 from telegram.ext import Application, CommandHandler, ContextTypes
