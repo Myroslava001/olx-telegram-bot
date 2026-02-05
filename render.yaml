@@ -1,7 +1,11 @@
 services:
-  - type: web
+  - type: worker
     name: olx-telegram-bot
-    runtime: python
-    plan: free
-    buildCommand: ""
+    env: python
+    plan: starter
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
     startCommand: bash start.sh
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.4
